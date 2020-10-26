@@ -1,6 +1,5 @@
 /**
- * dugong-backend
- * backend REST API server of Dugong, main application file
+ * backend REST API server, main application file
  * @author Arie M. Prasetyo (2020)
  */
 
@@ -8,7 +7,6 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const express = require('express');
 //
-const LogModel = require('./models/log');
 const CategoryModel = require('./models/category');
 
 // connect to mysql
@@ -38,27 +36,17 @@ app.get('/', (_, res) => {
 });
 
 /**
- * 1. Get logs
- */
-app.get('/api/v1/logs', (_, res) => LogModel.retrieve(res));
-
-/**
- * 2. Create a log
- */
-app.post('/api/v1/log', (req, res) => LogModel.create(req.body, res));
-
-/**
- * 3. Get categories
+ * 
  */
 app.get('/api/v1/categories', (_, res) => CategoryModel.retrieve(mysqlPool, res));
 
 /**
- * 4. Create category
+ * 
  */
 app.post('/api/v1/category', (req, res) => CategoryModel.create(req.body, mysqlPool, res));
 
 /**
- * 4. Update category
+ * 
  */
 app.put('/api/v1/category', (req, res) => CategoryModel.update(req.body, mysqlPool, res));
 

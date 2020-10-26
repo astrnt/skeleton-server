@@ -1,7 +1,7 @@
 {
-  "name": "dugong-backend",
+  "name": "astrnt-api-server",
   "version": "1.0.0",
-  "description": "backend REST API server of Dugong",
+  "description": "backend REST API server of Astrnt",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
