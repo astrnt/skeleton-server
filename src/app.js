@@ -7,7 +7,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const express = require('express');
 //
-const CategoryModel = require('./models/category');
+const ReportModel = require('./models/report');
 
 // connect to mysql
 const {MYSQL_CONF} = require('./config');
@@ -35,22 +35,23 @@ app.get('/', (_, res) => {
   res.json({msg: `This is API server. Format "/api/v1/<collection name>"`});
 });
 
-/**
- * 
- */
-app.get('/api/v1/categories', (_, res) => CategoryModel.retrieve(mysqlPool, res));
 
-/**
- * 
- */
-app.post('/api/v1/category', (req, res) => CategoryModel.create(req.body, mysqlPool, res));
+// - - - - - - - - API for report - - - - - - - -
+/** add a report entry */
+app.post('/api/v1/category', (req, res) => ReportModel.add(req.body, mysqlPool, res));
 
-/**
- * 
- */
-app.put('/api/v1/category', (req, res) => CategoryModel.update(req.body, mysqlPool, res));
+
+/** retrieve a report entries */
+app.get('/api/v1/category', (_, res) => ReportModel.retrieve(mysqlPool, res));
+
+
+/** edit a report entry */
+app.put('/api/v1/category', (req, res) => ReportModel.edit(req.body, mysqlPool, res));
+
+/** remove a report entry */
+app.delete('/api/v1/category', (req, res) => ReportModel.remove(req.body, mysqlPool, res));
+
 
 // export app
 module.exports = app;
-
 // EOF
