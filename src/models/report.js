@@ -31,7 +31,10 @@ const retrieve = (pool, res) => {
 
   pool.query(query, (err, rows) => {
     if (err) throw err;
-    res.json(rows);
+    res.json({
+      status: 'success',
+      payload: rows
+    });
   });
 };
 
