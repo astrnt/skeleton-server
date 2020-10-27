@@ -1,0 +1,1 @@
+This an example of a bare-minimum Node server running with Express and MySQL libraries.
