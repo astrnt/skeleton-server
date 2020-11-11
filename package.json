@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node_modules/mocha/bin/_mocha ./src/*.tests.js"
+    "test": "node_modules/mocha/bin/_mocha --opts ./mocha.opts ./*/*.tests.js"
   },
   "author": "Arie M. Prasetyo",
   "license": "ISC",
@@ -16,7 +16,16 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
     "chai": "^4.2.0",
-    "mocha": "^6.2.2"
+    "jsdom": "^16.4.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^6.2.2",
+    "transform-class-properties": "^1.0.0-beta"
   }
 }
