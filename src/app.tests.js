@@ -3,17 +3,26 @@
  * @author Arie M. Prasetyo (2020)
  */
 
-import {assert} from 'chai';
-
+const request = require('supertest');
+const {assert} = require('chai');
 const {equal} = assert;
+const app = require('./app');
 
 /**
  * Tests for each endpoint
  */
 describe('Tests for main API router', () => {
 
-  it('should return a correct `server` GET request payload', () => {
-    equal(true, true);
+  // test '/api/v2/course'
+  it('should send back a JSON object', () => {
+    request(app)
+    .get('/api/v2/course')
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err;
+      equal(res.body.status, 'success');
+    });
   });
 
 });

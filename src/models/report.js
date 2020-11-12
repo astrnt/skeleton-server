@@ -12,7 +12,7 @@
  * @param {*} pool mysql pooled connection
  * @param {*} res Express respond object
  */
-const add = async ({report_name, student_id}, pool, res) => {
+const add = ({report_name, student_id}, pool, res) => {
   const query = `INSERT INTO report (report_name, student_id) VALUES ('${report_name}', '${student_id}')`;
 
   pool.query(query, (err, rst) => {
