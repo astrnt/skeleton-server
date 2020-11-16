@@ -16,8 +16,8 @@ const MYSQL_CONF = {
   host: 'localhost',
   port: '3306',
   user: 'root',
-  password: process.env.NODE_ENV === 'dev' && process.env.MYSQL_PWD ? process.env.MYSQL_PWD : MYSQL_PWD_TEST,
-  database: process.env.NODE_ENV === 'dev' ? 'astrnt_sample': MYSQL_DB_TEST,
+  password: (process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'production') && process.env.MYSQL_PWD ? process.env.MYSQL_PWD : MYSQL_PWD_TEST,
+  database: (process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'production') ? 'astrnt_sample': MYSQL_DB_TEST,
   connectionLimit : 400
 };
 

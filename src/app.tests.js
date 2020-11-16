@@ -14,7 +14,7 @@ const app = require('./app');
 describe('Tests for main API router', () => {
 
   // test '/api/v2/course'
-  it('should send back a JSON object', () => {
+  it('should send back a COURSE JSON object', () => {
     request(app)
     .get('/api/v2/course')
     .expect('Content-Type', /json/)
@@ -22,6 +22,31 @@ describe('Tests for main API router', () => {
     .end((err, res) => {
       if (err) throw err;
       equal(res.body.status, 'success');
+    });
+  });
+
+  // test '/api/v2/student'
+  it('should send back a STUDENT JSON object', () => {
+    request(app)
+    .get('/api/v2/student')
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err;
+      equal(res.body.status, 'success');
+    });
+  });
+
+  // test '/api/v2/report'
+  it('should send back a REPORT JSON object', () => {
+    request(app)
+    .get('/api/v2/report')
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err;
+      equal(res.body.status, 'success');
+      console.log(res.body.payload);
     });
   });
 

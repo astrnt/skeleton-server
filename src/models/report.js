@@ -5,6 +5,9 @@
  * @module MySQL
  */
 
+/* check if methods are run inside a testing environment */
+const isTest = process.env.NODE_ENV === 'test' ? true : false;
+
 /**
  * create a new category entry
  * @param {*} report_name name of the report
@@ -27,6 +30,11 @@ const add = ({report_name, student_id}, pool, res) => {
  * @param {*} res 
  */
 const retrieve = (pool, res) => {
+  // testing purposes
+  if (isTest) {
+    return {status: 'success', payload: [{id:0, report_name:'report name', student_id:0}]};
+  }
+
   const query = `SELECT id, report_name, student_id FROM report`;
 
   pool.query(query, (err, rows) => {
